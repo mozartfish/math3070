@@ -1,0 +1,54 @@
+---
+title: "MATH 3070 Lab Project 9"
+author: "Your Name"
+date: "October 27, 2016"
+output:
+  html_document:
+    toc: TRUE
+---
+
+*Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
+
+*Since this assignment involves simulation, I set the seed to the following in order to get the same results:*
+
+```{r}
+set.seed(5292016)
+```
+
+## Problem 1 (Verzani problem 6.2)
+*Roll a pair of dice. Let $X$ be the largest value shown on the two dice. Use `sample()` to simulate five values of $X$.*
+
+```{r, echo=FALSE}
+# This code block resets the random seed in order to get consistent results. This will be hidden in the final document, but YOU MUST NOT CHANGE THIS!
+set.seed(5292016)
+```
+
+```{r, error=TRUE, tidy=TRUE}
+# Your code here
+```
+
+## Problem 2 (Verzani problem 6.3)
+*The National Basketball Association lottery to award the first pick in the draft is held by putting 1,000 balls into a hopper and selecting one. The teams with the worst records the previous year have a greater proportion of the balls. The data set `nba.draft` (**UsingR**) contains the ball allocation for the year 2002. Use `sample()` with Team as the data vector and `prob=Balls` to simulate the draft. What team do you select? Repeat until Golden State is chosen. How long did it take?*
+
+```{r, echo=FALSE}
+# This code block resets the random seed in order to get consistent results. This will be hidden in the final document, but YOU MUST NOT CHANGE THIS!
+set.seed(5292016)
+```
+
+```{r, error=TRUE, tidy=TRUE}
+# Your code here
+```
+
+## Problem 3 (Verzani problem 6.23)
+*Find the quintiles ($0^{\text{th}}$, $20^{\text{th}}$, $40^{\text{th}}$, $60^{\text{th}}$, $80^{\text{th}}$, and $100^{\text{th}}$ quantiles/percentiles) of the standard Normal distribution (this is a normal distribution with mean 0 and standard deviation 1).*
+
+```{r, error=TRUE, tidy=TRUE}
+# Your code here
+```
+
+## Problem 4
+*Consider flipping a fair coin $n$ times and counting the number of time the coin lands heads-up. This is a binomial random variable, but it turns out that as $n$ gets large, this distribution can be approximated with a Normal distribution, where the mean is $0.5 \times n$ and the standard deviation is $0.5 \times \sqrt{n}$. We know this thanks to the central limit theorem. When flipping 3, 5, and 20 times, plot the pmf of the binomial random variable with the appropriate parameters (you may use my function `plot_pmf()` from the lecture notes). Superimpose on each of these plots the density curve of the Normal distribution with the appropriate parameters (use the `lines()` function to do so; an example for doing this is in the lecture notes). What do you notice? When does the approximation appear best?*
+
+```{r, error=TRUE, tidy=TRUE}
+# Your code here
+```

@@ -1,0 +1,45 @@
+---
+title: "MATH 3070 Lab Project 14"
+author: "Your Name"
+date: "December 8, 2016"
+output:
+  html_document:
+    toc: TRUE
+---
+
+*Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
+
+## Problem 1 (Verzani problem 9.2)
+*The `samhda` (**UsingR**) data set contains information on marijuana usage among children as collected at the Substance Abuse and Mental Health Data Archive. The variable `marijuana` indicates whether the individual has ever tried marijuana. A 1 means yes, a 2 no. If it used to be that 50%  of the target population had tried marijuana, does this data indicate an increase in marijuana usage? Do a significance test of proportions to decide.*
+
+```{r, tidy = TRUE}
+# Your code here
+```
+
+## Problem 2 (Verzani problem 9.4)
+*In the United States in 2007, the proportion of adults age 21-24 who had no medical insurance was 28.1 percent. A survey of 75 recent college graduates in this age range finds that 40 percent are without insurance. Does this support a difference from the nationwide proportion? Perform a test of significance and report the p-value. Is it significant? (Perform this test "by hand", not using `prop.test()`.)*
+
+```{r, tidy = TRUE}
+# Your code here
+```
+
+## Problem 3 (Verzani problem 9.14)
+*The data set `normtemp` (**UsingR**) contains measurements of 130 healthy, randomly selected individuals. The variable `temperature` contains normal body temperature. Does the data appear to come from a Normal distribution? If so, perform a $t$-test to see if the commonly assumed value of 98.6 degrees fahrenheit is correct. (Studies have suggested that 98.2 degrees fahrenheit is more accurate.)*
+
+```{r, tidy = TRUE}
+# Your code here
+```
+
+## Problem 4 (Verzani problem 9.16)
+*A one-sided, one-sample $t$-test will be performed. What sample size is needed to have a power of 0.80 for a significance level of 0.05 if `delta = 0.05` and the population standard deviation is assumed to be 5?*
+
+```{r, tidy = TRUE}
+# Your code here
+```
+
+## Problem 5 (Verzani problem 9.31)
+*For the `babies` (**UsingR**) data set, the variable `age` contains the recorded mom's age and `dage` contains the dad's age for several cases in the sample. Do a significance test of the null hypothesis of equal ages against a one-sided alternative that the dads are older in the sampled population.*
+
+```{r, tidy = TRUE}
+# Your code here
+```

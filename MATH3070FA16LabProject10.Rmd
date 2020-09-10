@@ -1,0 +1,54 @@
+---
+title: "MATH 3070 Lab Project 10"
+author: "Your Name"
+date: "November 2, 2016"
+output:
+  html_document:
+    toc: TRUE
+---
+
+*Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
+
+*Since this assignment involves simulation, I set the seed to the following in order to get the same results:*
+
+```{r}
+set.seed(5292016)
+```
+
+## Problem 1
+*Use the pipe operators from **magrittr** to do the following, all in one pipeline:*
+
+1. *On the data set `BushApproval` (**UsingR**), select only Newsweek polls, and work with a data frame that only contains the variables `date` and `approval` (i.e., drop the variable `who`, since it's no longer relevant).*
+2. *Make a line plot of Bush's approval rating.* (Hint: The dates are character data, not numeric; consider using `as.Date()`, and set the `format` argument to `"%m/%d/%y"`.)
+3. *Subtract out the mean approval rating from the `approval` variable, and make a new variable containing the centered ratings.*
+4. *Plot the new centered approval ratings as a line plot, as you did in step 2.*
+
+```{r, error=TRUE, tidy=TRUE}
+# Your code here
+```
+
+## Problem 2
+
+*Use **dplyr** to subset the `Cars93` (**MASS**) data set, selecting only compact cars from the USA, and containing only variables directly related to price and miles per gallon (MPG). Randomly select five observations from the resulting data set.*
+
+```{r, error=TRUE, tidy=TRUE}
+# Your code here
+```
+
+## Problem 3
+
+*Use **reshape2** to transform the first 100 rows in the data set `dowdata` (**UsingR**) from wide-form format to long-form format, then plot the open, high, low, and close of the Dow Jones Industrial Average using `ggplot()` from **ggplot2**.*
+
+```{r, error=TRUE, tidy=TRUE}
+# Your code here
+```
+
+## Problem 4
+
+*Use **reshape2** to transform the data set `iris` from wide-form format to long-form format (using `melt()`) using `Species` as the id variable, then back to wide-form format (using `dcast()`), using the mean for aggregation.*
+
+```{r, error=TRUE, tidy=TRUE}
+# Your code here
+```
+
+

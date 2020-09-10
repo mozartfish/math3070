@@ -1,0 +1,54 @@
+---
+title: "MATH 3070 Lab Project 4"
+author: "Your Name"
+date: "September 15, 2016"
+output:
+  html_document:
+    toc: TRUE
+---
+
+*Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
+
+
+## Problem 1 (Verzani problem 4.7)
+*Use the `subset()` function to return a data frame made from the `Cars93` (**MASS**) data frame consisting only of `non-USA` cars in origin, with 4 cylinders and a maximum price of \$15,000 or less.*
+
+```{r, tidy=TRUE,error=TRUE}
+# Your code here
+```
+
+## Problem 2 (Verzani problem 4.10)
+*Find the standard deviation of each variable in the `mtcars` data set.*
+
+```{r, tidy=TRUE, error=TRUE}
+# Your code here
+```
+
+## Problem 3 (Verzani problem 4.11)
+*Find the standard deviation for each numeric variable in `Cars93` (**MASS**).*
+
+```{r, tidy=TRUE, error=TRUE}
+# Your code here
+```
+
+## Problem 4 (Verzani problem 4.12)
+*Write a function that summarizes the variables in a data frame with their name and their class (returned by `class()`). (There are many ways to do so.)*
+
+```{r, tidy=TRUE, error=TRUE}
+# Your code here
+```
+
+## Problem 5
+*You can find data describing various statistics on 2012 Olympic participating nations such as population and medal counts in the comma-separated value file located here: `http://introcs.cs.princeton.edu/java/data/olympic-medals2012.csv` Load this dataset into R in a data frame and do the following:*
+
+1. *Create a new data frame containing only the country's ISO code (a three-letter code for the country; USA is the United States of America, and DZA Algeria), name, population, and counts for gold, silver, and bronze. This data frame should be called `olympic2012`.*
+
+```{r, tidy=TRUE, error=TRUE}
+# Your code here
+```
+
+2. *What proportion of countries earned no medals? Answer this using `olympic2012`.*
+
+```{r, tidy=TRUE, error=TRUE}
+# Your code here
+```

@@ -1,0 +1,75 @@
+---
+title: "MATH 3070 Lab Project 13"
+author: "Your Name"
+date: "December 1, 2016"
+output:
+  html_document:
+    toc: TRUE
+---
+
+*Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
+
+## Problem 1 (Verzani problem 8.7)
+*Of the last ten times you've dropped your toast, it landed sticky-side down nine times. If these are a random sample from the $\text{Ber}(p)$ distribution, find an 80% confidence interval for $p$, the probability of the stidy side landing down. (Use `binconf()` (**Hmisc**) to compute the score interval.)*
+
+```{r, tidy = TRUE}
+# Your solution here
+```
+
+## Problem 2 (Verzani problem 8.10)
+*A survey is taken of 250 students, and a $\hat{p}$ of 0.45 is found. The same survey is repeated with 1000 students, and the same $\hat{p}$ is found. Compare the two 95% confidence intervals. What is the relationship? Is the margin of error for the second one four times smaller? If not, how much smaller is it? (Use `binom.test()` to answer this problem.)*
+
+```{r, tidy = TRUE}
+# Your solution here
+```
+
+## Problem 3
+*For the `Melanoma` (**MASS**) data set, use `prop.test()` to find a 99% confidence interval for the difference in proportion of male and female patients with an ulcer.*
+
+```{r, tidy = TRUE}
+# Your solution here
+```
+
+## Problem 4 (Verzani problem 8.15)
+*The `stud.recs` (**UsingR**) data set contains a sample of math SAT scores from some population in the variable `sat.m`. Find a 90% confidence interval for the mean math SAT score for this data. (Do not use `t.test(); find this confidence interval "by hand".)*
+
+```{r, tidy = TRUE}
+# Your solution here
+```
+
+## Problem 5 (Verzani problem 8.15)
+*For the `homedata` (**UsingR**) data set find 90% confidence intervals for both variables `y1970` and `y2000`, assuming the sample represents some population. Use `t.test()`, but first discuss whether the model assumptions are appropriate (include some check of the assumptions, like a Q-Q plot).*
+
+```{r, tidy = TRUE}
+# Your solution here
+```
+
+## Problem 6 (Verzani problem 8.26)
+*In determining the recommended dosage of AZT for AIDS patients, tests were done comparing efficacy for various dosages. If a low dosage is effective, then that would be recommended, as it would be less expensive and would have fewer potential side effects.*
+
+*A test to decide whether a dosage of 1,200 mg is similar to one of 400 mg is performed on two random samples of AIDS patients. A numeric measurement of a patient's health is made, and the before-and-after differences are recorded after treatment:*
+
+|Treatment      |   |   |   |   |    |    |    |   |   |   |
+|--------------:|---|---|---|---|----|----|----|---|---|---|
+| 400 mg group  | 7 | 0 | 8 | 1 | 10 | 12 | 2  | 9 | 5 | 2 |
+| 1200 mg group | 2 | 1 | 5 | 1 | 5  | 7  | -1 | 8 | 7 | 3 |
+
+*Find a 90% confidence interval for the differences of the means. What do you assume about the data?*
+
+```{r, tidy = TRUE}
+# Your solution here
+```
+
+## Problem 7 (Verzani problem 8.27)
+*The following data is from IQ tests for pairs of twins that were separated at birth. One twin was raised by the biological parents, the other by adoptive parents.*
+
+| Twin pair  | 1  | 2  | 3  | 4   | 5  | 6  | 7  | 8  | 9   | 10  |
+|-----------:|----|----|----|-----|----|----|----|----|-----|-----|
+| Foster     | 80 | 88 | 75 | 113 | 95 | 82 | 97 | 94 | 132 | 108 |
+| Biological | 90 | 91 | 79 | 97  | 97 | 82 | 87 | 94 | 131 | 115 |
+
+*Find a 90% confidence interval for the differences of mean. What do you assume about the data? In particular, are the two samples independent?*
+
+```{r, tidy = TRUE}
+# Your solution here
+```

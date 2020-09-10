@@ -1,0 +1,62 @@
+---
+title: "MATH 3070 Lab Fall Project 1"
+author: "Pranav Rajan"
+date: "September 10, 2020"
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    toc: yes
+---
+
+*Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
+
+## Problem 1 (Verzani problem 1.1)
+*Use R as you would a calculator to find numeric answers to the following:*
+
+1. $1 + 2(3 + 4)$
+
+```{r, tidy=TRUE, error=TRUE}
+# Your solution here
+1 + 2 * (3 + 4)
+```
+
+2. $4^3 + 3^{2 + 1}$
+
+```{r, tidy=TRUE, error=TRUE}
+# Your solution here
+(4 ** 3) + 3**(2 + 1)
+```
+
+3. $\sqrt{(4 + 3)(2 + 1)}$
+
+```{r, tidy=TRUE, error=TRUE}
+# Your solution here
+sqrt((4 + 3) * (2 + 1))
+```
+
+4. $\left(\frac{1+2}{3 + 4} \right)^2$
+
+```{r, tidy=TRUE, error=TRUE}
+# Your solution here
+((1 + 2)/(3 + 4))^2
+```
+
+## Problem 2 (Verzani problem 1.4)
+*Use R to compute the following:*
+
+$$\frac{0.25 - 0.2}{\sqrt{0.2(1-0.2)/100}}$$
+
+```{r, tidy=TRUE, error=TRUE}
+# Your solution here
+((0.25 - 0.2)/(sqrt(0.2 *(1 - 0.2)/100)))
+```
+
+## Problem 3 (Verzani problem 1.7)
+*The `exec.pay` (**UsingR**) data set is available after loading the package **UsingR**. Load the package, and inspect the data set. Scan the values to find the largest one.*
+
+```{r, tidy=TRUE, error=TRUE}
+# Your solution here
+require(UsingR)
+max(exec.pay)
+```

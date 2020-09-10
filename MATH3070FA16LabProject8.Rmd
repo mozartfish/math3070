@@ -1,0 +1,74 @@
+---
+title: "MATH 3070 Lab Project 8"
+author: "Your Name"
+date: "October 20, 2016"
+output:
+  html_document:
+    toc: TRUE
+---
+
+*Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
+
+## Problem 1 (Verzani problem 3.17)
+*The `state.x77` data set contains various information for each of the fifty United States. We wish to explore possible relationships among the variables. First, we make the data set easier to work with by turning it into a data frame.*
+
+```{r}
+x77 <- data.frame(state.x77)
+```
+
+*Now, make scatter plots of `Population` and `Frost`; `Population` and `Murder`; `Population` and `Area`; and `Income` and `HS.Grad`. Do any relationships appear linear? Are there any surprising correlations?*
+
+```{r, tidy=TRUE}
+# Your code here
+```
+
+## Problem 2 (Verzani problem 3.20)
+*The `batting` (**UsingR**) data set contains baseball statistics for the 2002 Major League Baseball season. What is the correlation between the number of strikeouts (`SO`) and the number of home runs (`HR`)? Make a scatter plot to see whether there is any trend. Does the data suggest that in order to hit a lot of home runs one should strike out a lot?*
+
+```{r, tidy=TRUE}
+# Your code here
+```
+
+## Problem 3 (Verzani problem 3.24)
+*The data frame `x77` contains data from each of the fifty United States. First coerce the `state.x77` variable into a data frame with:*
+
+```{r, eval=FALSE}
+x77 <- data.frame(state.x77)
+```
+
+*For the following, make a scatter plot with the regression line:*
+
+1. *The model of illiteracy rate (`Illiteracy`) modeled by high school graduation rate (`HS.Grad`).*
+
+```{r, tidy=TRUE}
+# Your code here
+```
+
+2. *The model of life expectancy (`Life.Exp`) modeled by the murder rate (`Murder`).*
+
+```{r, tidy=TRUE}
+# Your code here
+```
+
+3. *The model of income (`Income`) modeled by the illiteracy rate (`Illiteracy`).*
+
+```{r, tidy=TRUE}
+# Your code here
+```
+
+*Write a sentence or two describing any relationship for each fo the relationships examined above. In particular, do you find it as expected or surprising?*
+
+## Problem 4 (Verzani problem 3.32)
+*The data set `UScereal` (**MASS**) contains information about cereals on a shelf of a United States grocery store. Make a table showing the relationship between manufacturer, `mfr`, and shelf placement, `shelf`. Are there any obvious differences between manufacturers?*
+
+```{r, tidy=TRUE}
+# Your code here
+```
+
+## Problem 5 (Verzani problem 3.33)
+*The help page for `mosaicplot()` demonstrates the data set `HairEyeColor`, which records `sex`, `Hair` color, and `Eye` color for 592 statistics students. The data set comes as a flattened table, so simply passing the object to `mosaicplot()` will create the plot. (Or, as demonstrated, passing `shade = TRUE`, as in `mosaicplot(HairEyeColor, shade = TRUE)`, will produce a colored version.)*
+*Make the plot. Why does the help page note, "there are more blue-eyed, blonde females than expected?"*
+
+```{r, tidy=TRUE}
+# Your code here
+```

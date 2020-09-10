@@ -1,0 +1,64 @@
+---
+title: "MATH 3070 Lab Project 12"
+author: "Your Name"
+date: "November 16, 2016"
+output:
+  html_document:
+    toc: TRUE
+---
+
+*Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
+
+*Because randomization is used in this assignment, I set the seed here, in addition to beginning each code block. **Do not change the seed!***
+
+```{r}
+set.seed(6222016)
+```
+
+## Problem 1
+*The data set `DDT` (**MASS**) contains measurements of the pesticide DDT in kale, in parts per million. Use bootstrapping to estimate a 95% confidence interval for the mean ppm of DDT in kale. Do the same with the standard deviation. Use 2000 replications each.*
+
+```{r, echo=FALSE}
+# Seed reset; DO NOT CHANGE THE SEED!
+set.seed(6222016)
+```
+
+```{r, tidy=TRUE}
+# Your code here
+```
+
+## Problem 2
+*An inspector receives a batch of widgets which will be used to manufacture a new product. The batch will be rejected and sent back to the manufacturer if the proportion of defective widgets in the batch exceeds 10%. The inspector selected thirty widgets from the batch and tested them. He found that of the thirty widgets he tested, two were defective.*
+
+*Let the proportion of defective widgets in the batch, $p \in \{0.1, 0.2, 0.3, ..., 0.9\}$, and assign a uniform prior to $p$ (that is, according to the prior distribution, $P(p = p_i) = P(p = p_j)$ for every $p_i, p_j \in \{0.1, 0.2, 0.3, ..., 0.9\}$; in words, each $p$ is equally likely). Given the results of the inspection:*
+
+1. *Compute the posterior distribution of $p$. Plot both the prior and posterior distribution for $p$. (You may borrow code from the lecture as appropriate; for instance, I suggest using my function `plot_pmf()`.)*
+
+```{r, tidy=TRUE, error=TRUE}
+# Your code here
+```
+
+2. *What is the posterior probability that there are too many defective chips in the batch (that is, $p > .1$)?*
+
+```{r, tidy=TRUE, error=TRUE}
+# Your code here
+```
+
+3. *Compute the maximum* a-posteriori *(MAP) estimator for $p$ and a (approximately) 95% credible interval for $p$ using the posterior distribution.*
+
+```{r, tidy=TRUE, error=TRUE}
+# Your code here
+```
+
+4. *Repeat steps 1-3, but instead of $p \in \{0.1, 0.2, 0.3, ..., 0.9\}$, let $p \in \{0.05, 0.1, 0.15, ..., 0.95\}$. Do your conclusions from earlier change? How does the new 95% credible interval compare? What does increasing the resolution of possible $p$ values do to the posterior distribution? Which do you prefer?*
+
+```{r, tidy=TRUE, error = TRUE}
+# Your code here
+```
+
+5. *An advantage of Bayesian statistics is it's much more elegant to updating conclusions given prior conclusions and new data. The posterior distribution becomes the prior distribution of the next test, and a new posterior distribution can be computed given new data. Let's say the inspector draws ten more widgets from the batch and discovers that among the widgets in the new sample, five are defective. Repeat part 4, but using the posterior of the first experiment as the prior distribution of the next, and then compute the new posterior distribution. How does the new MAP estimator for $p$ and the new 95% credible interval compare to the old? What is the new probability that there are too many defective widgets? Based on this evidence, should the inspector recommend the batch be rejected?*
+
+```{r, tidy=TRUE, error = TRUE}
+# Your code here
+```
+

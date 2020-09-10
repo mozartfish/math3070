@@ -1,0 +1,56 @@
+---
+title: "MATH 3070 Lab Project 7"
+author: "Your Name"
+date: "October 6, 2016"
+output:
+  html_document:
+    toc: yes
+  pdf_document:
+    toc: yes
+---
+
+*Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
+
+## Problem 1 (Verzani problem 3.2)
+*For the `michelson` (**MASS**) data set, produce a density plot comparing `Speed` between Experiments 1 and 2.*
+
+```{r, tidy=TRUE, error=TRUE}
+# Your code here
+```
+
+## Problem 2 (Verzani problem 3.4)
+*Three students record the time spent on homework per class. Their data is:*
+
+| Student| 1  | 2  | 3  | 4  | 5 |
+|:-------|---:|---:|---:|---:|--:|
+| Marsha | 25 | 0  | 45 | 90 | 0 |
+| Bill   | 30 | 30 | 30 | 30 |   |
+| Holly  | 15 | 0  | 90 | 0  |   |
+
+*Use a list to store these values. Then create a boxplot to compare. (You must use `boxplot()`'s formula interface for this problem.)*
+
+```{r, tidy=TRUE, error=TRUE}
+# Your code here
+```
+
+## Problem 3 (Verzani problem 3.5)
+*A group of nursing students take turns measuring some basic assessments. Their data is:*
+
+|          | Temp | Pulse | Systolic | Diastolic |
+|----------|------|-------|----------|-----------|
+| Jackie   | 98.2 | 96    |  134     | 90        |
+| Florence | 98.6 | 56    |  120     | 80        |
+| Mildred  | 98.2 | 76    |  150     | 95        |
+
+*Create a data frame of these values. Will `plot()` and `boxplot()` produce the same graphic?*
+
+```{r, tidy=TRUE, error=TRUE}
+# Your code here
+```
+
+## Problem 4 (Verzani problem 3.8)
+*The second argument to `split` can be a list of factors. The result is that all interactions (possible combinations) are used for the groups. In the `ToothGrowth` data set, growth (`len`) is measured for two types of supplements (`supp`) and three doses (`dose`). Split this `len` value into 6 groups.*
+
+```{r, tidy=TRUE, error=TRUE}
+# Your code here
+```
