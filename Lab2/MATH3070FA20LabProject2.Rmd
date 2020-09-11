@@ -1,10 +1,12 @@
 ---
-title: "MATH 3070 Lab Summer Project 2 Solutions"
-author: "Your Name"
-date: "September 1, 2016"
+title: "MATH 3070 Lab Fall Project 2 Solutions"
+author: "Pranav Rajan"
+date: "September 10, 2020"
 output:
+  pdf_document:
+    toc: yes
   html_document:
-    toc: TRUE
+    toc: yes
 ---
 
 *Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
@@ -16,18 +18,21 @@ output:
 
 ```{r}
 # Your solution here
+rep("a", 6)
 ```
 
 2. `1 3 ... 99` *(the odd numbers)*
 
 ```{r}
 # Your solution here
+seq(1, 100, by=2)
 ```
 
 3. `1 1 1 2 2 2 3 3 3`
 
 ```{r}
 # Your solution here
+rep(c(1, 2, 3), times=c(3, 3, 3))
 ```
 
 ## Problem 2 (Verzani problem 2.3)
@@ -37,24 +42,28 @@ output:
 
 ```{r}
 # Your code here
+x <- c(2, 5, 4, 10, 8)
 ```
 
 2. *Find the square of each number.*
 
 ```{r}
 # Your code here
+x^2
 ```
 
 3. *Subtract 6 from each number.*
 
 ```{r}
 # Your code here
+x - 6
 ```
 
 4. *Subtract 9 from each number and then square the answer.*
 
 ```{r}
 # Your code here
+(x - 9)^2
 ```
 
 ## Problem 3 (Verzani problem 2.25)
@@ -62,6 +71,15 @@ output:
 
 ```{r}
 # Your code here
+isprime <- function(x) {
+  y <- seq(2, x-1)
+  for (value in y) {
+    if (x %% value == 0)
+      return("False")
+  }
+  return("True")
+}
+isprime(7)
 ```
 
 ***BONUS:** You do not need to check all numbers from 2 to $x - 1$ to see if a number is prime. What is the largest you would need to go for an arbitrary $x$? Create a new function, `isprime2()`, that implements this better (yet still slow) method.*
@@ -75,6 +93,15 @@ output:
 
 ```{r}
 # Your code here
+require("UsingR")
+# density plot
+pi2000density <- density(pi2000)
+# histogram plot
+# the breaks parameter defines the spacing between bars or the number of bars
+pi2000hist <- hist(pi2000, breaks= 0:10 - 0.5)
+
+plot(pi2000density)
+plot(pi2000hist)
 ```
 
 ## Problem 5 (Verzani problem 2.34)
@@ -82,4 +109,17 @@ output:
 
 ```{r}
 # Your code here
+require("UsingR")
+histogramChart <- hist(DDT)
+#plot(histogramChart)
+boxplotChart <- boxplot(DDT, main="DDT Kale Data", ylab="kale mass")
+
+# Estimates
+# Mean: 3.25 based on the boxplot
+# SD: roughly 0.5 based on sorting the data since the points seem really close 
+# print(sort(DDT))
+
+# Actual data summary
+mean(DDT)
+sd(DDT)
 ```
