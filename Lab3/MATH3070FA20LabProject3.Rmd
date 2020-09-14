@@ -1,10 +1,12 @@
 ---
 title: "MATH 3070 Lab Project 3"
-author: "Your Name"
-date: "September 8, 2016"
+author: "Pranav Rajan"
+date: "September 13, 2020"
 output:
+  pdf_document:
+    toc: yes
   html_document:
-    toc: TRUE
+    toc: yes
 ---
 
 *Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
@@ -16,18 +18,35 @@ output:
 
 ```{r}
 # Your code here
+require("UsingR")
+
+# get summary of the data
+#str(nym.2002)
+
+# There are 1000 observations of 5 variables
+# the time vector
+times <- nym.2002$time
+# print the first 6 values of the time vector
+#print(head(time))
+
+# time is calculated in minutes
+# calculate times less than 3 hours
+result <- sum(times < (3 * 60))/length(times) * 100
+print(result)
 ```
 
 2. *What is the time cutoff for the top 10%? The top 25%?*
 
 ```{r}
 # Your code here
+quantile(times, c(0.1, 0.25))
 ```
 
 3. *What time cuts off the bottom 10%?*
 
 ```{r}
 # Your code here
+quantile(times, c(0.9))
 ```
 
 ## Problem 2 (Verzani problem 4.1)
@@ -37,36 +56,66 @@ output:
 
 ```{r}
 # Your code here
+require("UsingR")
+
+# Rows
+NROW(UScereal)
+
+# Columns
+NCOL((UScereal))
 ```
 
 2. *How many different manufacturers are included?*
 
 ```{r}
 # Your code here
+# find all the unique manufacturers 
+unique(UScereal$mfr)
+
+
+
 ```
 
 3. *How many vitamin categories are included?*
 
 ```{r}
 # Your code here
+# find all the unique vitamin categories
+unique(UScereal$vitamins)
 ```
 
 4. *How many cereals have a sugar level above 10?*
 
 ```{r}
 # Your code here
+# get the sugar vector for the cereals (contains 65 values)
+sugars <- UScereal$sugars
+sum(sugars > 10)
 ```
 
 5. *What is the mean calorie value for cereals with more than 5 grams of fat? Less than or equal to 5?*
 
 ```{r}
 # Your code here
+fat <- UScereal$fat
+
+# fat greater than 5 grams
+greaterThan5 <- mean(fat > 5)
+print(greaterThan5)
+
+# fat less <= 5
+lessThanEqual <- mean(fat <= 5)
+print(lessThanEqual)
 ```
 
 6. *What is the mean calorie value for cereals on the middle shelf (2)?*
 
 ```{r}
 # Your code here
+shelf2Cereals <- subset(UScereal, shelf == 2)
+shelf2Calories <- shelf2Cereals$calories
+mean(shelf2Calories)
+
 ```
 
 ## Problem 3 (Verzani problem 4.2)
@@ -76,18 +125,25 @@ output:
 
 ```{r}
 # Your code here
+linearModel <- lm(mpg ~ wt, data=mtcars)
+print(length(linearModel))
 ```
 
 2. *What are the names of the components?*
 
 ```{r}
 # Your code here
+names(linearModel)
 ```
 
 3. *What kind of data is held in the `residuals` variable?*
 
 ```{r}
 # Your code here
+# get the residual data component
+residualsData <- linearModel["residuals"]
+# determine the type of the residuals data component using the information from str()
+typeof(residualsData$residuals)
 ```
 
 ## Problem 4
@@ -103,4 +159,6 @@ output:
 
 ```{r}
 # Your code here
+peopleData <- data.frame("First" = c("Marcus, Samuel, Gus, Margaret, Zim"), "Last" = c("Holstein", "Adams", "McPherson", "Olsen", "Newbold"), "Age" = c(23, 56, 43, 41, 95))
+str(peopleData)
 ```
