@@ -100,12 +100,13 @@ sum(sugars > 10)
 fat <- UScereal$fat
 
 # fat greater than 5 grams
-greaterThan5 <- mean(fat > 5)
-print(greaterThan5)
-
+newData <- subset(UScereal, fat > 5)
+newDataCalories <- mean(newData$calories)
+print(newDataCalories)
 # fat less <= 5
-lessThanEqual <- mean(fat <= 5)
-print(lessThanEqual)
+newData2 <- subset(UScereal, fat <= 5)
+newDataCalories2 <- mean(newData2$calories)
+print(newDataCalories2)
 ```
 
 6. *What is the mean calorie value for cereals on the middle shelf (2)?*
