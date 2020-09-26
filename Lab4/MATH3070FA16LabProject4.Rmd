@@ -1,10 +1,12 @@
 ---
 title: "MATH 3070 Lab Project 4"
-author: "Your Name"
-date: "September 15, 2016"
+author: "Pranav Rajan"
+date: "September 24, 2020"
 output:
+  pdf_document:
+    toc: yes
   html_document:
-    toc: TRUE
+    toc: yes
 ---
 
 *Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
@@ -15,6 +17,9 @@ output:
 
 ```{r, tidy=TRUE,error=TRUE}
 # Your code here
+require("UsingR")
+carData <- subset(Cars93, subset=Origin=="non-USA" & Cylinders==4 & Max.Price <=15)
+carData
 ```
 
 ## Problem 2 (Verzani problem 4.10)
@@ -22,6 +27,8 @@ output:
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+sdData <- Map(sd, mtcars)
+sdData
 ```
 
 ## Problem 3 (Verzani problem 4.11)
@@ -29,6 +36,11 @@ output:
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+# get numeric columns
+numericCols <- unlist(lapply(Cars93, is.numeric))
+numericDF <- Cars93[, numericCols]
+result <- mapply(sd, numericDF)
+result
 ```
 
 ## Problem 4 (Verzani problem 4.12)
@@ -36,6 +48,14 @@ output:
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+summaryFunc <- function(dataSet) {
+  variableNames <- names(dataSet)
+  variableClasses <- sapply(dataSet, class)
+  result <- data.frame("Variables"= variableNames, "Classes"=variableClasses)
+  print(result)
+  
+}
+summaryFunc(Cars93)
 ```
 
 ## Problem 5
@@ -45,10 +65,20 @@ output:
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+data <- read.csv("http://introcs.cs.princeton.edu/java/data/olympic-medals2012.csv", header=TRUE)
+df <- data.frame(data)
+olympic2012 <- df[, c("ISO", "Country.name", "pop.2010", "Gold", "Silver", "Bronze")]
+olympic2012
 ```
 
 2. *What proportion of countries earned no medals? Answer this using `olympic2012`.*
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+zeroData <- subset(olympic2012, subset=Gold==0 & Silver==0 & Bronze==0)
+zeroDataLength <- length(zeroData$ISO)
+olympic2012ISO <- length(olympic2012$ISO)
+
+countryProportion <- zeroDataLength/olympic2012ISO
+countryProportion
 ```
