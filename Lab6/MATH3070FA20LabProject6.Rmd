@@ -1,7 +1,7 @@
 ---
 title: "MATH 3070 Lab Project 6"
-author: "Your Name"
-date: "September 29, 2016"
+author: "Pranav Rajan"
+date: "October 2, 2020"
 output:
   html_document:
     toc: TRUE
@@ -14,6 +14,10 @@ output:
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+require(UsingR)
+library(lattice)
+battingAverage <- batting$H/batting$AB
+bwplot(batting$teamID ~ battingAverage, data=batting)
 ```
 
 ## Problem 2 (Verzani problem 5.7)
@@ -23,12 +27,16 @@ output:
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+require(UsingR)
+ggplot(mtcars, aes(group=gear, x=gear, y=mpg)) + geom_boxplot()
 ```
 
 3. *A scatterplot of `mpg` modeled by horsepower (`hp`). Create facets by the number of cylinders (`cyl`) and `gear`.*
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+library(ggplot2)
+ggplot(mtcars, aes(x=hp, y=mpg)) + geom_point() + facet_grid(cyl ~ gear)
 ```
 
 ## Problem 3
@@ -44,7 +52,12 @@ output:
 
 ```{r, tidy = TRUE, error=TRUE}
 # Your code here
+require(UsingR)
+intentionalWalkRate <- batting$IBB/batting$AB
+ggplot(batting, aes(x=HR, y=IBB/AB)) + geom_point() + geom_smooth(method=lm, fullrange=TRUE)
+
 ```
+
 
 ## Problem 4
 *Reconsider the data set from a previous project containing data about the results of 2012 Olympics. I load the data in for you below:*
@@ -57,4 +70,5 @@ olympic2012 <- read.csv("http://introcs.cs.princeton.edu/java/data/olympic-medal
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+str(olympic2012)
 ```
