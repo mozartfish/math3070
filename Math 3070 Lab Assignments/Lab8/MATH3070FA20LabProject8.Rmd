@@ -1,10 +1,12 @@
 ---
 title: "MATH 3070 Lab Project 8"
-author: "Your Name"
-date: "October 20, 2016"
+author: "Pranav Rajan"
+date: "October 21, 2020"
 output:
+  pdf_document:
+    toc: yes
   html_document:
-    toc: TRUE
+    toc: yes
 ---
 
 *Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
@@ -17,9 +19,14 @@ x77 <- data.frame(state.x77)
 ```
 
 *Now, make scatter plots of `Population` and `Frost`; `Population` and `Murder`; `Population` and `Area`; and `Income` and `HS.Grad`. Do any relationships appear linear? Are there any surprising correlations?*
+# Income versus HS.Grad seems linear
 
 ```{r, tidy=TRUE}
 # Your code here
+plot(x77$Population, x77$Frost, main = "Population vs. Frost", xlab = "Population", ylab = "Frost")
+plot(x77$Population, x77$Murder, main = "Population vs. Murder", xlab = "Population", ylab = "Murder")
+plot(x77$Population, x77$Area, main = "Population vs. Area", xlab = "Population", ylab = "Area")
+plot(x77$HS.Grad, x77$Income, main = "HS.Grad vs. Income", xlab = "HS.Grad", ylab = "Income")
 ```
 
 ## Problem 2 (Verzani problem 3.20)
@@ -27,6 +34,11 @@ x77 <- data.frame(state.x77)
 
 ```{r, tidy=TRUE}
 # Your code here
+require(UsingR)
+plot(batting$SO, batting$HR, main = "Home Runs by Strike Outs")
+abline(v=mean(batting$SO), lty=2)
+abline(h=mean(batting$HR), lty=2)
+points(mean(batting$SO), mean(batting$HR), pch=16, cex=4, col=rgb(0, 0, 0, .25))
 ```
 
 ## Problem 3 (Verzani problem 3.24)
@@ -42,33 +54,50 @@ x77 <- data.frame(state.x77)
 
 ```{r, tidy=TRUE}
 # Your code here
+res <- lm(x77$Illiteracy ~ x77$HS.Grad)
+plot(x77$Illiteracy ~ x77$HS.Grad, main="Illiteracy vs HS.Grad", xlab="HS.Grad", ylab = "Illiteracy")
+abline(res)
 ```
 
 2. *The model of life expectancy (`Life.Exp`) modeled by the murder rate (`Murder`).*
 
 ```{r, tidy=TRUE}
 # Your code here
+res <- lm(x77$Life.Exp ~ x77$Murder)
+plot(x77$Life.Exp ~ x77$Murder, main="Life Expectancy vs Murder", xlab="Murder", ylab = "Life Expectancy")
+abline(res)
 ```
 
 3. *The model of income (`Income`) modeled by the illiteracy rate (`Illiteracy`).*
 
 ```{r, tidy=TRUE}
 # Your code here
+res <- lm(x77$Income ~ x77$Illiteracy)
+plot(x77$Income ~ x77$Illiteracy, main="Income vs Illiteracy", xlab="Illiteracy", ylab = "Income")
+abline(res)
 ```
 
 *Write a sentence or two describing any relationship for each fo the relationships examined above. In particular, do you find it as expected or surprising?*
+# The relationship is linear using least squares regression
 
 ## Problem 4 (Verzani problem 3.32)
 *The data set `UScereal` (**MASS**) contains information about cereals on a shelf of a United States grocery store. Make a table showing the relationship between manufacturer, `mfr`, and shelf placement, `shelf`. Are there any obvious differences between manufacturers?*
 
 ```{r, tidy=TRUE}
 # Your code here
+require(UsingR)
+table(UScereal$mfr, UScereal$shelf)
 ```
 
 ## Problem 5 (Verzani problem 3.33)
 *The help page for `mosaicplot()` demonstrates the data set `HairEyeColor`, which records `sex`, `Hair` color, and `Eye` color for 592 statistics students. The data set comes as a flattened table, so simply passing the object to `mosaicplot()` will create the plot. (Or, as demonstrated, passing `shade = TRUE`, as in `mosaicplot(HairEyeColor, shade = TRUE)`, will produce a colored version.)*
 *Make the plot. Why does the help page note, "there are more blue-eyed, blonde females than expected?"*
+# There are more blue-eyed blonde females than expected because of 
+# the model used according to my understanding of the documentation
 
 ```{r, tidy=TRUE}
 # Your code here
+require(stats)
+mosaicplot(HairEyeColor, shade = TRUE)
+
 ```
