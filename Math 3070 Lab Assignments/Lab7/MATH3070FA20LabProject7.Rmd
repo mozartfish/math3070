@@ -1,11 +1,11 @@
 ---
 title: "MATH 3070 Lab Project 7"
-author: "Your Name"
-date: "October 6, 2016"
+author: "Pranav Rajan"
+date: "October 21, 2020"
 output:
-  html_document:
-    toc: yes
   pdf_document:
+    toc: yes
+  html_document:
     toc: yes
 ---
 
@@ -16,6 +16,13 @@ output:
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+require(UsingR)
+str(michelson)
+len_split <- with(michelson, split(Speed, Expt))
+expt1 <- len_split$"1"
+expt2 <- len_split$"2"
+plot(density(expt1), lty= 1)
+lines(density(expt2), lty=2)
 ```
 
 ## Problem 2 (Verzani problem 3.4)
@@ -31,6 +38,10 @@ output:
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+times <- c(25, 0, 45, 90, 0, 30, 30, 30, 30, 15, 0, 90, 0)
+students <- rep(c("Marsha", "Bill", "Holly"), times=c(5, 4, 4))
+theData <- list(time = times, student = students)
+boxplot(time ~ student, data = theData)
 ```
 
 ## Problem 3 (Verzani problem 3.5)
@@ -46,6 +57,12 @@ output:
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+Jackie <- c(98.2, 96, 134, 90)
+Florence <- c(98.6, 56, 120, 80)
+Mildred <- c(98.2, 76, 150, 95)
+theData <- data.frame(Jackie, Florence, Mildred)
+plot(theData)
+boxplot(theData)
 ```
 
 ## Problem 4 (Verzani problem 3.8)
@@ -53,4 +70,9 @@ output:
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+str(ToothGrowth)
+len <- ToothGrowth$len
+supp <- ToothGrowth$supp
+dose <- ToothGrowth$dose
+split(len, list(supp, dose))
 ```
