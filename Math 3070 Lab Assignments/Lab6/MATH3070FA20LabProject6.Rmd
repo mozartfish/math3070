@@ -70,5 +70,23 @@ olympic2012 <- read.csv("http://introcs.cs.princeton.edu/java/data/olympic-medal
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
-str(olympic2012)
+bronze <- olympic2012$Bronze.Per.100K.pop
+silver <- olympic2012$Silver.Per.100K.pop
+gold <- olympic2012$Gold.Per.100K.pop
+country <- olympic2012$Country.name
+df <- data.frame(bronze, silver, gold, row.names=country)
+
+# plot a heat map
+plotmat <- sapply(df, scale)
+rownames(plotmat) <- rownames(df)
+heatmap(plotmat, Rowv = NA, Colv = NA)
+
+# The heat map is a numeric matrix with the bronze, 
+# silver and gold medals per 100,000 people in the 
+# population standardized for each variable 
+# where the mean was subtracted from each observation, and then divided by the standard deviation
+# The countries are on the y axis 
+# The bronze, silver and gold categories are on the
+# x axis.
+
 ```
