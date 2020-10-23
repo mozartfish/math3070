@@ -19,14 +19,15 @@ x77 <- data.frame(state.x77)
 ```
 
 *Now, make scatter plots of `Population` and `Frost`; `Population` and `Murder`; `Population` and `Area`; and `Income` and `HS.Grad`. Do any relationships appear linear? Are there any surprising correlations?*
-# Income versus HS.Grad seems linear
 
 ```{r, tidy=TRUE}
 # Your code here
 plot(x77$Population, x77$Frost, main = "Population vs. Frost", xlab = "Population", ylab = "Frost")
 plot(x77$Population, x77$Murder, main = "Population vs. Murder", xlab = "Population", ylab = "Murder")
 plot(x77$Population, x77$Area, main = "Population vs. Area", xlab = "Population", ylab = "Area")
-plot(x77$HS.Grad, x77$Income, main = "HS.Grad vs. Income", xlab = "HS.Grad", ylab = "Income")
+plot(x77$Income, x77$HS.Grad, main = "Income vs. HS.Grad", xlab = "HS.Grad", ylab = "Income")
+# The Income vs. HS.Grad looks linear
+# One thing though is that modeling looks completely off when you consider the different x and y variables
 ```
 
 ## Problem 2 (Verzani problem 3.20)
@@ -35,10 +36,13 @@ plot(x77$HS.Grad, x77$Income, main = "HS.Grad vs. Income", xlab = "HS.Grad", yla
 ```{r, tidy=TRUE}
 # Your code here
 require(UsingR)
-plot(batting$SO, batting$HR, main = "Home Runs by Strike Outs")
+plot(batting$SO, batting$HR, main = "Home Runs by Strike Outs", xlab= "Strike Outs",
+     ylab="Home Runs")
 abline(v=mean(batting$SO), lty=2)
 abline(h=mean(batting$HR), lty=2)
 points(mean(batting$SO), mean(batting$HR), pch=16, cex=4, col=rgb(0, 0, 0, .25))
+# The data suggests that you need to strike out a lot to hit a lot of home runs.
+# This however seems a bit off because the cases are really extreme
 ```
 
 ## Problem 3 (Verzani problem 3.24)
@@ -57,6 +61,7 @@ x77 <- data.frame(state.x77)
 res <- lm(x77$Illiteracy ~ x77$HS.Grad)
 plot(x77$Illiteracy ~ x77$HS.Grad, main="Illiteracy vs HS.Grad", xlab="HS.Grad", ylab = "Illiteracy")
 abline(res)
+# This chart looks a bit off because the units used for the HS.Grad make no sense
 ```
 
 2. *The model of life expectancy (`Life.Exp`) modeled by the murder rate (`Murder`).*
@@ -78,7 +83,8 @@ abline(res)
 ```
 
 *Write a sentence or two describing any relationship for each fo the relationships examined above. In particular, do you find it as expected or surprising?*
-# The relationship is linear using least squares regression
+# I found it interesting that all the charts were negative sloped. Another interesting thing was that least squares regression was used since there are different ways in R
+# to calculate the residual such as using the pearson correlation coefficient.
 
 ## Problem 4 (Verzani problem 3.32)
 *The data set `UScereal` (**MASS**) contains information about cereals on a shelf of a United States grocery store. Make a table showing the relationship between manufacturer, `mfr`, and shelf placement, `shelf`. Are there any obvious differences between manufacturers?*
@@ -87,17 +93,26 @@ abline(res)
 # Your code here
 require(UsingR)
 table(UScereal$mfr, UScereal$shelf)
+# In the first shelf  G has the most items
+# In the second shelf G and K are tied for the numbers of items on the second shelf
+# In the third shelf K has the most items
+# These statistics might be useful for how to generate sales to maximize depending
+# on which shelf consumers pick the most often
 ```
 
 ## Problem 5 (Verzani problem 3.33)
 *The help page for `mosaicplot()` demonstrates the data set `HairEyeColor`, which records `sex`, `Hair` color, and `Eye` color for 592 statistics students. The data set comes as a flattened table, so simply passing the object to `mosaicplot()` will create the plot. (Or, as demonstrated, passing `shade = TRUE`, as in `mosaicplot(HairEyeColor, shade = TRUE)`, will produce a colored version.)*
 *Make the plot. Why does the help page note, "there are more blue-eyed, blonde females than expected?"*
-# There are more blue-eyed blonde females than expected because of 
-# the model used according to my understanding of the documentation
 
 ```{r, tidy=TRUE}
 # Your code here
 require(stats)
 mosaicplot(HairEyeColor, shade = TRUE)
+# According to the textbook, a mosaic plot is an extension of a bar plot that makes it possible
+# to view two or more categorical variables
+# In the the case of this example, there are more blue eyed blond females based on the darkness
+# of the shade of blue and the and the size of the rectangle
+# There is also something about the pearson correlation being used which might also 
+# affect the results
 
 ```
