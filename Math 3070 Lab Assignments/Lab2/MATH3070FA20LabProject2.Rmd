@@ -93,6 +93,7 @@ isprime(7)
 
 ```{r}
 # Your code here
+suppressMessages(library(UsingR))
 require("UsingR")
 # density plot
 pi2000density <- density(pi2000)
@@ -109,6 +110,7 @@ plot(pi2000hist)
 
 ```{r}
 # Your code here
+suppressMessages(library(UsingR))
 require("UsingR")
 histogramChart <- hist(DDT)
 #plot(histogramChart)

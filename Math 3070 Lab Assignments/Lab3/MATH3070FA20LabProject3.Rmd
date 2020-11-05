@@ -18,6 +18,7 @@ output:
 
 ```{r}
 # Your code here
+suppressMessages(library(UsingR))
 require("UsingR")
 
 # get summary of the data
@@ -56,6 +57,7 @@ quantile(times, c(0.9))
 
 ```{r}
 # Your code here
+suppressMessages(library(UsingR))
 require("UsingR")
 
 # Rows

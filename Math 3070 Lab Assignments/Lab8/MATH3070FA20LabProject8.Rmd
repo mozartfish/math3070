@@ -35,6 +35,7 @@ plot(x77$Income, x77$HS.Grad, main = "Income vs. HS.Grad", xlab = "HS.Grad", yla
 
 ```{r, tidy=TRUE}
 # Your code here
+suppressMessages(library(UsingR))
 require(UsingR)
 plot(batting$SO, batting$HR, main = "Home Runs by Strike Outs", xlab= "Strike Outs",
      ylab="Home Runs")
@@ -83,6 +84,7 @@ abline(res)
 ```
 
 *Write a sentence or two describing any relationship for each fo the relationships examined above. In particular, do you find it as expected or surprising?*
+
 # I found it interesting that all the charts were negative sloped. Another interesting thing was that least squares regression was used since there are different ways in R
 # to calculate the residual such as using the pearson correlation coefficient.
 
@@ -91,6 +93,7 @@ abline(res)
 
 ```{r, tidy=TRUE}
 # Your code here
+suppressMessages(library(UsingR))
 require(UsingR)
 table(UScereal$mfr, UScereal$shelf)
 # In the first shelf  G has the most items
@@ -106,10 +109,11 @@ table(UScereal$mfr, UScereal$shelf)
 
 ```{r, tidy=TRUE}
 # Your code here
+suppressMessages(library(UsingR))
+suppressMessages(library(stats))
 require(stats)
 mosaicplot(HairEyeColor, shade = TRUE)
-# According to the textbook, a mosaic plot is an extension of a bar plot that makes it possible
-# to view two or more categorical variables
+# According to the textbook, a mosaic plot is an extension of a bar plot that makes it possible to view two or more categorical variables
 # In the the case of this example, there are more blue eyed blond females based on the darkness
 # of the shade of blue and the and the size of the rectangle
 # There is also something about the pearson correlation being used which might also 

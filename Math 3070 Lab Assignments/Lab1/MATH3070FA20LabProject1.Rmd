@@ -57,6 +57,7 @@ $$\frac{0.25 - 0.2}{\sqrt{0.2(1-0.2)/100}}$$
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your solution here
+suppressMessages(library(UsingR))
 require(UsingR)
 max(exec.pay)
 ```

@@ -14,6 +14,8 @@ output:
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+suppressMessages(library(UsingR))
+suppressMessages(library(lattice))
 require(UsingR)
 library(lattice)
 battingAverage <- batting$H/batting$AB
@@ -27,6 +29,7 @@ bwplot(batting$teamID ~ battingAverage, data=batting)
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+suppressMessages(library(UsingR))
 require(UsingR)
 ggplot(mtcars, aes(group=gear, x=gear, y=mpg)) + geom_boxplot()
 ```
@@ -35,6 +38,7 @@ ggplot(mtcars, aes(group=gear, x=gear, y=mpg)) + geom_boxplot()
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+suppressMessages(library(ggplot2))
 library(ggplot2)
 ggplot(mtcars, aes(x=hp, y=mpg)) + geom_point() + facet_grid(cyl ~ gear)
 ```
@@ -52,6 +56,7 @@ ggplot(mtcars, aes(x=hp, y=mpg)) + geom_point() + facet_grid(cyl ~ gear)
 
 ```{r, tidy = TRUE, error=TRUE}
 # Your code here
+suppressMessages(library(UsingR))
 require(UsingR)
 intentionalWalkRate <- batting$IBB/batting$AB
 ggplot(batting, aes(x=HR, y=IBB/AB)) + geom_point() + geom_smooth(method=lm, fullrange=TRUE)
@@ -88,5 +93,9 @@ heatmap(plotmat, Rowv = NA, Colv = NA)
 # The countries are on the y axis 
 # The bronze, silver and gold categories are on the
 # x axis.
+# An interesting finding was that there were that France did not have a lot of gold, silver
+# and bronze medals per 100,000 people even though the French are really successful in 
+# Olympic sports. I also think that there is something off by this chart because there
+# should be a lot more countries (the United States is missing for example). # It might be interesting to group the countries by continent for the data.
 
 ```

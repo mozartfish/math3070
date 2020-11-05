@@ -17,6 +17,7 @@ output:
 
 ```{r, tidy=TRUE,error=TRUE}
 # Your code here
+suppressMessages(library(UsingR))
 require("UsingR")
 carData <- subset(Cars93, subset=Origin=="non-USA" & Cylinders==4 & Max.Price <=15)
 carData

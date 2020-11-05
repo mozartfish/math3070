@@ -1,7 +1,7 @@
 ---
 title: "MATH 3070 Lab Project 10"
-author: "Your Name"
-date: "November 2, 2016"
+author: "Pranav Rajan"
+date: "November 5, 2020"
 output:
   html_document:
     toc: TRUE

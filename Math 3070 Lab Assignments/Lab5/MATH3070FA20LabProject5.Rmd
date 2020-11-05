@@ -16,6 +16,7 @@ output:
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+suppressMessages(library(UsingR))
 require(UsingR)
 with(UScereal,
      plot(calories, sugars,
@@ -37,6 +38,8 @@ legend(370, 10, legend=c("Shelf 1", " Shelf 2", "Shelf 3"),
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+suppressMessages(library(UsingR))
+suppressMessages(library(dplyr))
 require(usingR)
 require(dplyr)
 data <- UScereal
@@ -51,6 +54,7 @@ pairs(numericData,
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+suppressMessages(library(UsingR))
 require(UsingR)
 plot(HR ~ H, data=batting,
      # filled circles

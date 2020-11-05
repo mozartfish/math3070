@@ -16,6 +16,7 @@ output:
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+suppressMessages(library(UsingR))
 require(UsingR)
 speed <- michelson$Speed
 expt <- michelson$Expt

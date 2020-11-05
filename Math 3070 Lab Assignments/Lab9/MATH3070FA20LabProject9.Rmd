@@ -1,10 +1,12 @@
 ---
 title: "MATH 3070 Lab Project 9"
-author: "Your Name"
-date: "October 27, 2016"
+author: "Pranav Rajan"
+date: "October 29, 2020"
 output:
+  pdf_document:
+    toc: yes
   html_document:
-    toc: TRUE
+    toc: yes
 ---
 
 *Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
@@ -25,6 +27,13 @@ set.seed(5292016)
 
 ```{r, error=TRUE, tidy=TRUE}
 # Your code here
+list <- c(1:5)
+for (value in list) {
+  d1 <- sample(1:6, size=1, replace = TRUE)
+  d2 <- sample(1:6, size=1, replace=TRUE)
+  print(max(d1, d2))
+}
+
 ```
 
 ## Problem 2 (Verzani problem 6.3)
@@ -37,6 +46,11 @@ set.seed(5292016)
 
 ```{r, error=TRUE, tidy=TRUE}
 # Your code here
+suppressMessages(library(UsingR))
+require(UsingR)
+sample(nba.draft$Team, size = 1, replace=TRUE, prob = nba.draft$Balls)
+# first run result: Golden State
+# number of attempts to get to Golden State: 1
 ```
 
 ## Problem 3 (Verzani problem 6.23)
@@ -44,6 +58,7 @@ set.seed(5292016)
 
 ```{r, error=TRUE, tidy=TRUE}
 # Your code here
+qnorm(c(0.0, 0.2, 0.4, 0.6, 0.8, 1.0), mean = c(0, 0, 0, 0, 0, 0), sd = c(1, 1, 1, 1, 1, 1))
 ```
 
 ## Problem 4
@@ -51,4 +66,39 @@ set.seed(5292016)
 
 ```{r, error=TRUE, tidy=TRUE}
 # Your code here
+plot_pmf <- function(q, p) {
+    # This will plot a series of horizontal lines at q with height p, setting
+    # the y limits to a reasonable heights
+    plot(q, p, type = "h", xlab = "x", ylab = "probability", main = "pmf", ylim = c(0, 
+        max(p) + 0.1))
+    # Usually these plots have a dot at the end of the line; the point function
+    # will add these dots to the plot created above
+    points(q, p, pch = 16, cex = 2)
+}
+
+# 3 flips
+binom_q3 <- 0:3
+binom_pmf3 <- dbinom(binom_q3, size = 3, prob = 0.5)
+clt_norm_q3 <- seq(0, 3, length = 1000)
+plot_pmf(binom_q3, binom_pmf3)
+lines(clt_norm_q3, dnorm(clt_norm_q3, mean = 0.5 * 3, sd = 0.5 * sqrt(3)), col = "black")
+
+# 5 flips
+binom_q5 <- 0:5
+binom_pmf5 <- dbinom(binom_q5, size = 5, prob = 0.5)
+clt_norm_q5 <- seq(0, 5, length = 1000)
+plot_pmf(binom_q5, binom_pmf5)
+lines(clt_norm_q5, dnorm(clt_norm_q5, mean = 0.5 * 5, sd = 0.5 * sqrt(5)), col = "black")
+
+# 20 flips
+binom_q20 <- 0:20
+binom_pmf20 <- dbinom(binom_q20, size = 20, prob = 0.5)
+clt_norm_q20 <- seq(0, 20, length = 1000)
+plot_pmf(binom_q20, binom_pmf20)
+lines(clt_norm_q20, dnorm(clt_norm_q20, mean = 0.5 * 20, sd = 0.5 * sqrt(20)), col = "black")
+
+# Explanation
+# The more flips you have the density curve starts looking closer like the normal distribution.
+# The approximation looks best when we have 20 flips. The reason is because we have a lot more
+# points which allows us to visualize the distribution better.
 ```
