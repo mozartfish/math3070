@@ -3,8 +3,10 @@ title: "MATH 3070 Lab Project 10"
 author: "Pranav Rajan"
 date: "November 5, 2020"
 output:
+  pdf_document:
+    toc: yes
   html_document:
-    toc: TRUE
+    toc: yes
 ---
 
 *Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
@@ -25,6 +27,32 @@ set.seed(5292016)
 
 ```{r, error=TRUE, tidy=TRUE}
 # Your code here
+suppressMessages(library(UsingR))
+library(magrittr)
+
+BushApproval %>%
+  subset(select = -who, who == "newsweek") %>%
+  transform(date = as.Date(date, format = "%m/%d/%y")) %>%
+plot(xlab = "Year", ylab = "Approval", main = "Bush Approval Rating According to Newsweek Polls", type = "l") %$%
+  subset(BushApproval, select = -who, who == "newsweek") %>%
+  transform(date = as.Date(date, format = "%m/%d/%y")) %>%
+  transform(centeredData = approval - mean(approval)) %>%
+  subset(select = -approval) %>%
+  plot(xlab = "Year", ylab = "Approval", main = "Bush Approval Rating According to Newsweek Polls", type = "l")
+
+  
+  
+  
+  
+
+  
+# bushSubset <- subset(BushApproval, select = -c(who),
+#                      subset = who == "newsweek")
+# 
+# bushSubset$date = as.Date(bushSubset$date, "%m/%d/%y")
+# plot(bushSubset$date, bushSubset$approval, xlab = "Year", ylab = "Approval", main = "Bush Approval Rating According to Newsweek Polls", type = "l")
+
+
 ```
 
 ## Problem 2
@@ -33,6 +61,10 @@ set.seed(5292016)
 
 ```{r, error=TRUE, tidy=TRUE}
 # Your code here
+library(dplyr)
+suppressMessages(library(UsingR))
+Cars93 %>% filter(Origin == "USA" & Type == "Compact") %>%
+  select(Min.Price, Price, Max.Price, MPG.city, MPG.highway) %>% sample(size=5)
 ```
 
 ## Problem 3
@@ -41,6 +73,11 @@ set.seed(5292016)
 
 ```{r, error=TRUE, tidy=TRUE}
 # Your code here
+library(reshape2)
+dow = dowdata[1:100,] %>% melt(id.vars = "Date")
+ggplot(dow, aes(Date, value, color = variable, group = 1)) + geom_line() +
+  labs(x = "Date", y = "value", title = "Dow Jones Industrial Average")
+
 ```
 
 ## Problem 4
@@ -49,6 +86,10 @@ set.seed(5292016)
 
 ```{r, error=TRUE, tidy=TRUE}
 # Your code here
+library(reshape2)
+longDataIris = melt(iris, id.vars = "Species")
+wideDataIris = dcast(longDataIris, Species ~ variable, mean)
+print(wideDataIris)
 ```
 
 
