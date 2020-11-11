@@ -1,10 +1,12 @@
 ---
 title: "MATH 3070 Lab Project 11"
-author: "Your Name"
-date: "November 10, 2016"
+author: "Pranav Rajan"
+date: "November 12, 2020"
 output:
+  pdf_document:
+    toc: yes
   html_document:
-    toc: TRUE
+    toc: yes
 ---
 
 *Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
@@ -21,6 +23,13 @@ set.seed(6222016)
 ```{r, echo=FALSE}
 # Seed reset; DO NOT CHANGE THE SEED!
 set.seed(6222016)
+result <- replicate(1000, sum(sample(1:6, 2, replace = TRUE)))
+sevens <- result[result == 7]
+eights <- result[result == 8]
+print(length(sevens))
+print(length(eights))
+
+# An 8 is more common than a 7 
 ```
 
 ```{r, tidy=TRUE}
@@ -33,6 +42,11 @@ set.seed(6222016)
 ```{r, echo=FALSE}
 # Seed reset; DO NOT CHANGE THE SEED!
 set.seed(6222016)
+suppressMessages(library(UsingR))
+result <- replicate(1000, sample(rivers, 10, replace = TRUE))
+# result of the mean of the samples
+mean(result)
+mean(rivers)
 ```
 
 ```{r, tidy=TRUE}
@@ -46,6 +60,9 @@ set.seed(6222016)
 
 ```{r, tidy = TRUE}
 # Your code here
+suppressMessages(library(UsingR))
+data <- Melanoma
+data
 ```
 
 2. *Investigate whether the difference you observed in part 1 is significant, using procedures explored in the lecture. There are two groups in this investigation: male (`Melanoma$sex == 0`) and female (`Melanoma$sex == 1`). Randomly reassign the data in the `time` variable to the two groups, and compute the mean difference. Repeat 2000 times (this needs to be done relatively quickly; if it takes over a few minutes, I will dock points), and determine how frequently the difference in the mean survival time between men and women (that is, $\bar{x}_{\text{men}} - \bar{x}_{\text{women}}$ in the simulated data is less than the same difference observed in the actual data. Does this analysis suggest the difference is due to "noise", or due to an actual difference in survival time between men and women?*
