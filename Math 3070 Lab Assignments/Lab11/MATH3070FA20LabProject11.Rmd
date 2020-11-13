@@ -29,7 +29,7 @@ eights <- result[result == 8]
 print(length(sevens))
 print(length(eights))
 
-# An 8 is more common than a 7 
+# An 7 is more common than a 8
 ```
 
 ```{r, tidy=TRUE}
@@ -61,8 +61,17 @@ mean(rivers)
 ```{r, tidy = TRUE}
 # Your code here
 suppressMessages(library(UsingR))
-data <- Melanoma
-data
+# data <- Melanoma
+
+# men data
+menData <- subset(Melanoma, select = c(time, sex), subset = sex == 0)
+femaleData <- subset(Melanoma, select = c(time, sex), subset = sex == 1)
+result <- mean(menData$time) - mean(femaleData$time)
+
+print(result)
+
+# The difference between the mean for the men and women is 336.94
+
 ```
 
 2. *Investigate whether the difference you observed in part 1 is significant, using procedures explored in the lecture. There are two groups in this investigation: male (`Melanoma$sex == 0`) and female (`Melanoma$sex == 1`). Randomly reassign the data in the `time` variable to the two groups, and compute the mean difference. Repeat 2000 times (this needs to be done relatively quickly; if it takes over a few minutes, I will dock points), and determine how frequently the difference in the mean survival time between men and women (that is, $\bar{x}_{\text{men}} - \bar{x}_{\text{women}}$ in the simulated data is less than the same difference observed in the actual data. Does this analysis suggest the difference is due to "noise", or due to an actual difference in survival time between men and women?*
@@ -74,4 +83,25 @@ set.seed(6222016)
 
 ```{r, tidy=TRUE}
 # Your code here
+set.seed(6222016)
+suppressMessages(library(UsingR))
+menData <- subset(Melanoma, select = c(time, sex), subset = sex == 0)
+femaleData <- subset(Melanoma, select = c(time, sex), subset = sex == 1)
+actual_result <- mean(menData$time) - mean(femaleData$time)
+
+sim_diffs = 
+  replicate(200, {
+    t = sample(Melanoma$time, 205)
+    t1 = t[0:126]
+    t2 = t[126:204]
+    menData$time = t1
+    femaleData$time = t2
+    abs(mean(menData$time) - mean(femaleData$time))
+  })
+
+meanDiff <- mean(sim_diffs < actual_result)
+
+print(meanDiff)
+
+
 ```
