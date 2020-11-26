@@ -1,10 +1,12 @@
 ---
 title: "MATH 3070 Lab Project 12"
-author: "Your Name"
-date: "November 16, 2016"
+author: "Pranav Rajan"
+date: "November 19, 2020"
 output:
+  pdf_document:
+    toc: yes
   html_document:
-    toc: TRUE
+    toc: yes
 ---
 
 *Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
@@ -21,6 +23,22 @@ set.seed(6222016)
 ```{r, echo=FALSE}
 # Seed reset; DO NOT CHANGE THE SEED!
 set.seed(6222016)
+suppressMessages(library(UsingR))
+# sample mean of ddt
+meanDDT <- mean(DDT)
+
+# simulate ddt 
+ddt_sim <- sample(DDT, size = length(DDT), replace = TRUE)
+
+# mean of simulation
+mDDT_sim <- mean(ddt_sim)
+
+# standard error
+mean_boot <- replicate(2000, {
+    mean(sample(DDT, size = length(DDT), replace = TRUE))
+})
+
+quantile(mean_boot, c(0.025, 0.975))
 ```
 
 ```{r, tidy=TRUE}
@@ -36,29 +54,211 @@ set.seed(6222016)
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+# plotting function code 
+# I will be plotting a lot of pmf's in this document, so I create a function
+# to help save effort.  The first argument, q, represents the quantiles of
+# the random variable (the values that are possible). The second argument
+# represents the value of the pmf at each q (and thus should be of the same
+# length); in other words, for each q, p is the probability of seeing q
+plot_pmf <- function(q, p, main = "pmf") {
+    # This will plot a series of horizontal lines at q with height p, setting
+    # the y limits to a reasonable heights
+    plot(q, p, type = "h", xlab = "x", ylab = "probability", main = main, ylim = c(0, 
+        max(p) + 0.1))
+    # Usually these plots have a dot at the end of the line; the point function
+    # will add these dots to the plot created above
+    points(q, p, pch = 16, cex = 1.5)
+}
+
+# Change plot settings
+old_par <- par()
+par(mfrow = c(2, 1))
+
+# Possible probabilities
+(p <- seq(0, 1, by = 0.1))
+
+# The prior distribution of p
+(prior <- rep(1/length(p), times = length(p)))
+
+# Plot the prior
+plot_pmf(p, prior, main = "Prior")
+
+# Compute the likelihood function
+n <- 30  # Number of widgets
+s <- 2  # Number of defective widgets
+(like <- p^s * (1 - p)^(n - s))
+
+# With the likelihood and prior computed, we now obtain the posterior
+# distribution.
+post <- like * prior
+(post <- post/sum(post))  # Normalize; make proper probabilities
+
+plot_pmf(p, post, main = "Posterior")
+
 ```
 
 2. *What is the posterior probability that there are too many defective chips in the batch (that is, $p > .1$)?*
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+sum(post[which(p > .1)])
 ```
 
 3. *Compute the maximum* a-posteriori *(MAP) estimator for $p$ and a (approximately) 95% credible interval for $p$ using the posterior distribution.*
 
 ```{r, tidy=TRUE, error=TRUE}
 # Your code here
+
+# Getting the MAP estimator for p
+p[which.max(post)]
+
+# get the cdf
+(post_cdf <- cumsum(post))
+
+(a <- p[max(which(post_cdf < 0.025))])
+
+(b <- p[min(which(post_cdf > 0.975))])
+
+sum(post[which(p >= a & p <= b)])
+
+
 ```
 
 4. *Repeat steps 1-3, but instead of $p \in \{0.1, 0.2, 0.3, ..., 0.9\}$, let $p \in \{0.05, 0.1, 0.15, ..., 0.95\}$. Do your conclusions from earlier change? How does the new 95% credible interval compare? What does increasing the resolution of possible $p$ values do to the posterior distribution? Which do you prefer?*
 
 ```{r, tidy=TRUE, error = TRUE}
 # Your code here
+# Your code here
+# plotting function code 
+# I will be plotting a lot of pmf's in this document, so I create a function
+# to help save effort.  The first argument, q, represents the quantiles of
+# the random variable (the values that are possible). The second argument
+# represents the value of the pmf at each q (and thus should be of the same
+# length); in other words, for each q, p is the probability of seeing q
+plot_pmf <- function(q, p, main = "pmf") {
+    # This will plot a series of horizontal lines at q with height p, setting
+    # the y limits to a reasonable heights
+    plot(q, p, type = "h", xlab = "x", ylab = "probability", main = main, ylim = c(0, 
+        max(p) + 0.1))
+    # Usually these plots have a dot at the end of the line; the point function
+    # will add these dots to the plot created above
+    points(q, p, pch = 16, cex = 1.5)
+}
+
+# Change plot settings
+old_par <- par()
+par(mfrow = c(2, 1))
+
+# Possible probabilities
+(p <- seq(0, 1, by = 0.05))
+
+# The prior distribution of p
+(prior <- rep(1/length(p), times = length(p)))
+
+# Plot the prior
+plot_pmf(p, prior, main = "Prior")
+
+# Compute the likelihood function
+n <- 30  # Number of widgets
+s <- 2  # Number of defective widgets
+(like <- p^s * (1 - p)^(n - s))
+
+# With the likelihood and prior computed, we now obtain the posterior
+# distribution.
+post <- like * prior
+(post <- post/sum(post))  # Normalize; make proper probabilities
+
+plot_pmf(p, post, main = "Posterior")
+
+
+# compute 95%
+# Getting the MAP estimator for p
+print("THE 95% FOR THE NEW DATA")
+p[which.max(post)]
+
+# get the cdf
+(post_cdf <- cumsum(post))
+
+(a <- p[max(which(post_cdf < 0.025))])
+
+(b <- p[min(which(post_cdf > 0.975))])
+
+sum(post[which(p >= a & p <= b)])
+
+# Increasing the resolution lowered my original result from 0.992 to 0.982
+# I would prefer the higher resolution because when by lowering the size of the confidence interval we can get a more precise answer. However in this problem the larger confidence area has a better result than the lower confidence interval
+
 ```
 
 5. *An advantage of Bayesian statistics is it's much more elegant to updating conclusions given prior conclusions and new data. The posterior distribution becomes the prior distribution of the next test, and a new posterior distribution can be computed given new data. Let's say the inspector draws ten more widgets from the batch and discovers that among the widgets in the new sample, five are defective. Repeat part 4, but using the posterior of the first experiment as the prior distribution of the next, and then compute the new posterior distribution. How does the new MAP estimator for $p$ and the new 95% credible interval compare to the old? What is the new probability that there are too many defective widgets? Based on this evidence, should the inspector recommend the batch be rejected?*
 
 ```{r, tidy=TRUE, error = TRUE}
 # Your code here
+# Your code here
+# plotting function code 
+# I will be plotting a lot of pmf's in this document, so I create a function
+# to help save effort.  The first argument, q, represents the quantiles of
+# the random variable (the values that are possible). The second argument
+# represents the value of the pmf at each q (and thus should be of the same
+# length); in other words, for each q, p is the probability of seeing q
+plot_pmf <- function(q, p, main = "pmf") {
+    # This will plot a series of horizontal lines at q with height p, setting
+    # the y limits to a reasonable heights
+    plot(q, p, type = "h", xlab = "x", ylab = "probability", main = main, ylim = c(0, 
+        max(p) + 0.1))
+    # Usually these plots have a dot at the end of the line; the point function
+    # will add these dots to the plot created above
+    points(q, p, pch = 16, cex = 1.5)
+}
+
+# Change plot settings
+old_par <- par()
+par(mfrow = c(2, 1))
+
+# Possible probabilities
+(p <- seq(0, 1, by = 0.1))
+
+# The prior distribution of p
+(prior <- rep(1/length(p), times = length(p)))
+
+# Plot the prior
+plot_pmf(p, prior, main = "Prior")
+
+# Compute the likelihood function
+n <- 40  # Number of widgets
+s <- 5  # Number of defective widgets
+(like <- p^s * (1 - p)^(n - s))
+
+# With the likelihood and prior computed, we now obtain the posterior
+# distribution.
+post <- like * prior
+(post <- post/sum(post))  # Normalize; make proper probabilities
+
+plot_pmf(p, post, main = "Posterior")
+
+# compute 95%
+# Getting the MAP estimator for p
+print("THE 95% FOR THE NEW DATA")
+p[which.max(post)]
+
+# get the cdf
+(post_cdf <- cumsum(post))
+
+(a <- p[max(which(post_cdf < 0.025))])
+
+(b <- p[min(which(post_cdf > 0.975))])
+
+sum(post[which(p >= a & p <= b)])
+
+# compute the defective
+print("find the defective")
+1 - sum(post[which(p > .1)])
+
+
+
+# The new map estimator is now 0.1 and the 95% confidence is now 0.97 which are smaller than in Question 2 Part 1
+
+# Since p falls in the 95% confidence range we should reject the sample
+
 ```
 
