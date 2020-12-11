@@ -1,10 +1,12 @@
 ---
 title: "MATH 3070 Lab Project 14"
-author: "Your Name"
-date: "December 8, 2016"
+author: "Pranav Rajan"
+date: "December 8, 2020"
 output:
+  pdf_document:
+    toc: yes
   html_document:
-    toc: TRUE
+    toc: yes
 ---
 
 *Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
@@ -14,6 +16,14 @@ output:
 
 ```{r, tidy = TRUE}
 # Your code here
+suppressMessages(library(UsingR))
+yes <- sum(samhda$marijuana == 1)
+no <- sum(samhda$marijuana == 2)
+print(yes)
+print(no)
+prop.test(yes, length(samhda$marijuana), p = 0.5)
+
+# p value is near 0, so we reject the null hypothesis
 ```
 
 ## Problem 2 (Verzani problem 9.4)
@@ -21,6 +31,19 @@ output:
 
 ```{r, tidy = TRUE}
 # Your code here
+# Hypothesis + set up
+n <- 75
+p0 <- 0.281
+p_hat <- 0.40
+# test
+z <- (p_hat - p0) / sqrt((p0 * (1 - p0)) / n)
+
+#p value 
+p_val <- 2 * pnorm(z, lower.tail = FALSE)
+print(p_val)
+
+# it is not significant
+# reject the null hypothesis
 ```
 
 ## Problem 3 (Verzani problem 9.14)
@@ -28,6 +51,12 @@ output:
 
 ```{r, tidy = TRUE}
 # Your code here
+suppressMessages(library(UsingR))
+t.test(normtemp$temperature, mu = 98.6)
+# reject the null hypothesis since the value is super close to 0 
+t.test(normtemp$temperature, mu = 98.2)
+
+# 98.2 is a better value for approximating the normal distribution
 ```
 
 ## Problem 4 (Verzani problem 9.16)
@@ -35,6 +64,7 @@ output:
 
 ```{r, tidy = TRUE}
 # Your code here
+power.t.test(power = 0.80, delta = 0.05, sd = 5, sig.level = 0.05, alternative="one.sided")
 ```
 
 ## Problem 5 (Verzani problem 9.31)
@@ -42,4 +72,7 @@ output:
 
 ```{r, tidy = TRUE}
 # Your code here
+suppressMessages(library(UsingR))
+
+
 ```

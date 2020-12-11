@@ -1,10 +1,12 @@
 ---
 title: "MATH 3070 Lab Project 13"
-author: "Your Name"
-date: "December 1, 2016"
+author: "Pranav Rajan"
+date: "November 29, 2020"
 output:
+  pdf_document:
+    toc: yes
   html_document:
-    toc: TRUE
+    toc: yes
 ---
 
 *Remember: I expect to see commentary either in the text, in the code with comments created using `#`, or (preferably) both! **Failing to do so may result in lost points!***
